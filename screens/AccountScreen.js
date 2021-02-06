@@ -53,6 +53,11 @@ export default function AccountScreen({ navigation }) {
       <Text style={[styles.titleText, isDarkModeOn && { color: "white" }]}>
         Member Account Screen
       </Text>
+      <Image
+        source={require("../assets/tennis.png")}
+        style={{ height: 168, width: 148, marginBottom: 100, borderRadius: 15 }}
+      />
+
       {loading ? (
         <ActivityIndicator />
       ) : (
@@ -72,7 +77,7 @@ export default function AccountScreen({ navigation }) {
 
       <Button title="Sign out" onPress={signOut} />
       <Image
-        source={require("../assets/dateme.jpg")}
+        source={require("../assets/ball.gif")}
         style={{ height: 160, width: 160, marginTop: 15, borderRadius: 15 }}
       />
     </View>
@@ -83,7 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     color: "brown",
-    marginBottom: 108,
+    marginBottom: 8,
   },
   usernameText: {
     fontSize: 48,

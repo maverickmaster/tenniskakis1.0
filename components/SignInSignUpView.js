@@ -39,15 +39,15 @@ export default function SignInSignUpView({ navigation, isSignIn }) {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <Image
-          source={require("../assets/dateme.jpg")}
+          source={require("../assets/tennis.png")}
           style={{
-            height: 168,
+            height: 188,
             width: 168,
             marginTop: 10,
             borderRadius: 15,
           }}
         />
-        <Text style={styles.title}>{"DateME App"}</Text>
+        <Text style={styles.title}>{"Mobile App"}</Text>
         <Text style={styles.body}>
           {isSignIn ? "Log in now" : "Account Sign up"}
         </Text>
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 24,
-    backgroundColor: "skyblue",
+    backgroundColor: "limegreen",
   },
   title: {
     fontSize: 48,
