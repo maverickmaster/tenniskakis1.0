@@ -55,7 +55,7 @@ export default function AccountScreen({ navigation }) {
       </Text>
       <Image
         source={require("../assets/tennis.png")}
-        style={{ height: 168, width: 148, marginBottom: 100, borderRadius: 15 }}
+        style={{ height: 168, width: 148, marginBottom: 60, borderRadius: 15 }}
       />
 
       {loading ? (
@@ -77,8 +77,8 @@ export default function AccountScreen({ navigation }) {
 
       <Button title="Sign out" onPress={signOut} />
       <Image
-        source={require("../assets/ball.gif")}
-        style={{ height: 160, width: 160, marginTop: 15, borderRadius: 15 }}
+        source={require("../assets/federer.gif")}
+        style={{ height: 230, width: 260, marginTop: 15, borderRadius: 15 }}
       />
     </View>
   );

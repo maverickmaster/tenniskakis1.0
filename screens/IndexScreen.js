@@ -161,10 +161,20 @@ export default function IndexScreen({ navigation, route }) {
               style={{ width: "10%", alignItems: "center", marginRight: 30 }}
             >
               <TouchableOpacity onPress={() => showPressed(item.id)}>
-                <MaterialIcons
+                {/* <MaterialIcons
                   name="arrow-forward-ios"
                   size={24}
                   color="gray"
+                /> */}
+
+                <Image
+                  source={require("../assets/ball.gif")}
+                  style={{
+                    height: 40,
+                    width: 40,
+                    marginRight: 20,
+                    borderRadius: 10,
+                  }}
                 />
               </TouchableOpacity>
             </View>
@@ -208,6 +218,16 @@ export default function IndexScreen({ navigation, route }) {
           extraData={refresh}
         />
         <Text style={styles.errorText}>{errorMessage}</Text>
+
+        <Image
+          source={require("../assets/ball.gif")}
+          style={{
+            height: 60,
+            width: 60,
+            marginTop: 10,
+            borderRadius: 15,
+          }}
+        />
       </View>
     </View>
   );
