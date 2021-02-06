@@ -135,7 +135,7 @@ export default function IndexScreen({ navigation, route }) {
   function renderPost({ item }) {
     return (
       <Card style={styles.card}>
-        <CardItem style={{ backgroundColor: "violet" }}>
+        <CardItem style={{ backgroundColor: "lawngreen" }}>
           <Body style={{ flexDirection: "row", alignItems: "center" }}>
             <View
               style={{
@@ -152,19 +152,9 @@ export default function IndexScreen({ navigation, route }) {
             <View style={{ width: "80%", flexDirection: "column" }}>
               <TouchableOpacity onPress={() => showPressed(item.id)}>
                 <Text style={styles.renderViewText}>{item.title}</Text>
-                <Text style={{ color: "white" }} numberOfLines={1}>
+                <Text style={{ color: "blue" }} numberOfLines={1}>
                   {item.content}
                 </Text>
-
-                {/* <Text style={{ color: "white" }} numberOfLines={1}>
-                  {item.age}
-                </Text>
-                <Text style={{ color: "white" }} numberOfLines={1}>
-                  {item.career}
-                </Text>
-                <Text style={{ color: "white" }} numberOfLines={1}>
-                  {item.email}
-                </Text> */}
               </TouchableOpacity>
             </View>
             <View
@@ -207,7 +197,7 @@ export default function IndexScreen({ navigation, route }) {
       ]}
     >
       <Text style={[styles.text, isDarkModeOn && { color: "white" }]}>
-        Members Available Dates
+        Kakis Available Dates
       </Text>
       <View style={styles.container}>
         <FlatList
@@ -231,7 +221,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: "skyblue",
+    backgroundColor: "green",
     // alignItems: "center",
     textAlign: "center",
     // justifyContent: "center",
