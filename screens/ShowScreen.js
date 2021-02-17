@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
@@ -16,9 +17,9 @@ import { DarkTheme } from "@react-navigation/native";
 export default function ShowScreen({ navigation, route }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [age, setAge] = useState("");
-  const [career, setCareer] = useState("");
-  const [email, setEmail] = useState("");
+  const [ntrp, setNtrp] = useState("");
+  const [location, setLocation] = useState("");
+  const [mobile, setMobile] = useState("");
 
   const [id, setID] = useState(route.params.id);
   const [loading, setLoading] = useState(false);
@@ -54,15 +55,15 @@ export default function ShowScreen({ navigation, route }) {
       const response = await axios.get(API + API_POST_ID + recID);
       console.log("Title: " + response.data.title);
       console.log("Content: " + response.data.content);
-      console.log("Age: " + response.data.age);
-      console.log("Career: " + response.data.career);
-      console.log("Email: " + response.data.email);
+      console.log("Ntrp: " + response.data.ntrp);
+      console.log("Location: " + response.data.location);
+      console.log("Mobile: " + response.data.mobile);
 
       setTitle(response.data.title);
       setContent(response.data.content);
-      setAge(response.data.age);
-      setCareer(response.data.career);
-      setEmail(response.data.email);
+      setNtrp(response.data.ntrp);
+      setLocation(response.data.location);
+      setMobile(response.data.mobile);
 
       console.log("Post retrive successful!");
     } catch (error) {
@@ -87,10 +88,21 @@ export default function ShowScreen({ navigation, route }) {
         <CardItem>
           <Body>
             <Text style={styles.cardTitle}>{title}</Text>
-            <Text style={styles.cardBody}>{age}</Text>
-            <Text style={styles.cardBody}>{career}</Text>
-            <Text style={styles.cardBody}>{email}</Text>
+            <Text style={styles.cardBody}>{ntrp}</Text>
+            <Text style={styles.cardBody}>{mobile}</Text>
+            <Text>{location}</Text>
             <Text>{content}</Text>
+
+            <Image
+              source={require("../assets/player.gif")}
+              style={{
+                height: 380,
+                alignItems: "center",
+                width: 300,
+                marginTop: 35,
+                borderRadius: 1,
+              }}
+            />
           </Body>
         </CardItem>
       </Card>

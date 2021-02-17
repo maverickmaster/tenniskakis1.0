@@ -16,15 +16,15 @@ import { API, API_CREATE_POST } from "../hooks/useAPI";
 export default function CreateScreen({ navigation }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [age, setAge] = useState("");
-  const [career, setCareer] = useState("");
-  const [email, setEmail] = useState("");
+  const [ntrp, setNtrp] = useState("");
+  const [location, setLocation] = useState("");
+  const [mobile, setMobile] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   // Create posts to DB
-  async function createPost(title, content, age, career, email) {
+  async function createPost(title, content, ntrp, location, mobile) {
     console.log("--- Post creating ---");
     var success = true;
 
@@ -33,9 +33,9 @@ export default function CreateScreen({ navigation }) {
       const response = await axios.post(API + API_CREATE_POST, {
         title,
         content,
-        age,
-        career,
-        email,
+        ntrp,
+        location,
+        mobile,
       });
       console.log("Post create successful!");
       console.log("response.data:");
@@ -54,9 +54,9 @@ export default function CreateScreen({ navigation }) {
   async function createPressed(
     recTitle,
     recContent,
-    recAge,
-    recCareer,
-    recEmail
+    recNtrp,
+    recLocation,
+    recMobile
   ) {
     // Error check if Name entered
     if (recTitle == "") {
@@ -65,22 +65,22 @@ export default function CreateScreen({ navigation }) {
     }
     // Error check if Date entered
     if (recContent == "") {
-      setErrorMessage("Please enter an available date for a meetup.");
+      setErrorMessage("Please enter an available date for a Tennis Game.");
       return;
     }
     // Error check if Age entered
-    if (recAge == "") {
-      setErrorMessage("Please enter your Age.");
+    if (recNtrp == "") {
+      setErrorMessage("Please enter your Tennis NTRP rating.");
       return;
     }
     // Error check if Career entered
-    if (recCareer == "") {
-      setErrorMessage("Please enter your Career.");
+    if (recLocation == "") {
+      setErrorMessage("Please enter the location for the Game.");
       return;
     }
     // Error check if Email entered
-    if (recEmail == "") {
-      setErrorMessage("Please enter your Email.");
+    if (recMobile == "") {
+      setErrorMessage("Please enter your Mobile number.");
       return;
     }
 
@@ -88,18 +88,18 @@ export default function CreateScreen({ navigation }) {
     const didCreatePost = await createPost(
       recTitle,
       recContent,
-      recAge,
-      recCareer,
-      recEmail
+      recNtrp,
+      recLocation,
+      recMobile
     );
 
     if (didCreatePost) {
       navigation.navigate("Index", {
         title,
         content,
-        age,
-        career,
-        email,
+        ntrp,
+        location,
+        mobile,
         action: "create",
       });
     } else {
@@ -125,9 +125,9 @@ export default function CreateScreen({ navigation }) {
           onTextInput={() => setErrorMessage("")}
           autoCorrect={false}
         ></TextInput>
-        <Text style={styles.textLabel2}>Date, Time and Event </Text>
+        <Text style={styles.textLabel2}>Date and Time </Text>
         <TextInput
-          placeholder="Suggest an event and date for a meet up..."
+          placeholder="Suggest a date and time for a Game..."
           style={styles.textInput}
           value={content}
           onChangeText={(input) => setContent(input)}
@@ -135,30 +135,30 @@ export default function CreateScreen({ navigation }) {
           autoCorrect={false}
         ></TextInput>
 
-        <Text style={styles.textLabel2}>Age</Text>
+        <Text style={styles.textLabel2}>NTRP rating </Text>
         <TextInput
-          placeholder="Enter Age..."
+          placeholder="Enter your Tennis NTRP rating..."
           style={styles.textInput}
-          value={age}
-          onChangeText={(input) => setAge(input)}
+          value={ntrp}
+          onChangeText={(input) => setNtrp(input)}
           onTextInput={() => setErrorMessage("")}
           autoCorrect={false}
         ></TextInput>
-        <Text style={styles.textLabel2}>Career</Text>
+        <Text style={styles.textLabel2}>Location</Text>
         <TextInput
-          placeholder="Enter current Career..."
+          placeholder="Enter Game venue..."
           style={styles.textInput}
-          value={career}
-          onChangeText={(input) => setCareer(input)}
+          value={location}
+          onChangeText={(input) => setLocation(input)}
           onTextInput={() => setErrorMessage("")}
           autoCorrect={false}
         ></TextInput>
-        <Text style={styles.textLabel2}>Email</Text>
+        <Text style={styles.textLabel2}>Mobile </Text>
         <TextInput
-          placeholder="Enter contect Email..."
+          placeholder="Enter contect Mobile..."
           style={styles.textInput}
-          value={email}
-          onChangeText={(input) => setEmail(input)}
+          value={mobile}
+          onChangeText={(input) => setMobile(input)}
           onTextInput={() => setErrorMessage("")}
           autoCorrect={false}
         ></TextInput>
@@ -178,7 +178,9 @@ export default function CreateScreen({ navigation }) {
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.button, styles.buttonSubmit, { marginLeft: 10 }]}
-            onPress={() => createPressed(title, content, age, career, email)}
+            onPress={() =>
+              createPressed(title, content, ntrp, location, mobile)
+            }
           >
             <Text style={styles.buttonText}>
               {loading ? (

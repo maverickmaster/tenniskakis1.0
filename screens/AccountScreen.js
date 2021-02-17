@@ -78,7 +78,7 @@ export default function AccountScreen({ navigation }) {
       <Button title="Sign out" onPress={signOut} />
       <Image
         source={require("../assets/federer.gif")}
-        style={{ height: 230, width: 260, marginTop: 15, borderRadius: 15 }}
+        style={{ height: 230, width: 460, marginTop: 15, borderRadius: 1 }}
       />
     </View>
   );

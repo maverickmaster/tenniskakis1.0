@@ -58,9 +58,9 @@ export default function IndexScreen({ navigation, route }) {
   }, [
     route.params?.title,
     route.params?.content,
-    route.params?.age,
-    route.params?.career,
-    route.params?.email,
+    route.params?.ntrp,
+    route.params?.location,
+    route.params?.mobile,
   ]);
 
   // this retrive posts from DB and refresh flatlist
@@ -135,7 +135,7 @@ export default function IndexScreen({ navigation, route }) {
   function renderPost({ item }) {
     return (
       <Card style={styles.card}>
-        <CardItem style={{ backgroundColor: "lawngreen" }}>
+        <CardItem style={{ backgroundColor: "white" }}>
           <Body style={{ flexDirection: "row", alignItems: "center" }}>
             <View
               style={{
@@ -219,15 +219,15 @@ export default function IndexScreen({ navigation, route }) {
         />
         <Text style={styles.errorText}>{errorMessage}</Text>
 
-        <Image
-          source={require("../assets/ball.gif")}
+        {/* <Image
+          source={require("../assets/bounce.gif")}
           style={{
             height: 60,
-            width: 60,
+            width: 460,
             marginTop: 10,
-            borderRadius: 15,
+            // borderRadius: 15,
           }}
-        />
+        /> */}
       </View>
     </View>
   );
