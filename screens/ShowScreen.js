@@ -6,6 +6,7 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
+  Linking,
 } from "react-native";
 import { commonStyles } from "../styles/commonStyles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -88,11 +89,24 @@ export default function ShowScreen({ navigation, route }) {
         <CardItem>
           <Body>
             <Text style={styles.cardTitle}>{title}</Text>
-            <Text style={styles.cardBody}>{ntrp}</Text>
-            <Text style={styles.cardBody}>{mobile}</Text>
+            <Text style={styles.cardBody}>NTRP Level: {ntrp}</Text>
+            <Text style={styles.cardBody}>Mobile No: {mobile}</Text>
             <Text>{location}</Text>
             <Text>{content}</Text>
-
+            <Text style={styles.cardTitle2}>
+              Click below to check your NTRP rating (National Tennis Rating
+              Program)
+            </Text>
+            <Text
+              style={{ color: "blue" }}
+              onPress={() =>
+                Linking.openURL(
+                  "https://www.usta.com/content/dam/usta/pdfs/NTRP%20General%20Characteristics.pdf"
+                )
+              }
+            >
+              NTRP Rating Guide
+            </Text>
             <Image
               source={require("../assets/player.gif")}
               style={{
@@ -106,14 +120,14 @@ export default function ShowScreen({ navigation, route }) {
           </Body>
         </CardItem>
       </Card>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={[styles.button, styles.buttonBack]}
         onPress={() => backPressed()}
       >
         <Text style={styles.buttonText}>
           {loading ? <ActivityIndicator size="large" color="red" /> : "Back"}
         </Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
@@ -150,6 +164,12 @@ const styles = StyleSheet.create({
     color: "blue",
     fontWeight: "bold",
     marginBottom: 8,
+  },
+  cardTitle2: {
+    fontSize: 16,
+    color: "orange",
+    fontWeight: "bold",
+    marginTop: 18,
   },
   cardBody: {
     fontSize: 16,
