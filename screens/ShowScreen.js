@@ -21,6 +21,7 @@ export default function ShowScreen({ navigation, route }) {
   const [ntrp, setNtrp] = useState("");
   const [location, setLocation] = useState("");
   const [mobile, setMobile] = useState("");
+  const [msg, setMsg] = useState("");
 
   const [id, setID] = useState(route.params.id);
   const [loading, setLoading] = useState(false);
@@ -90,9 +91,20 @@ export default function ShowScreen({ navigation, route }) {
           <Body>
             <Text style={styles.cardTitle}>{title}</Text>
             <Text style={styles.cardBody}>NTRP Level: {ntrp}</Text>
-            <Text style={styles.cardBody}>Mobile No: {mobile}</Text>
             <Text>{location}</Text>
             <Text>{content}</Text>
+
+            <Text
+              style={{ color: "blue" }}
+              onPress={() =>
+                Linking.openURL(
+                  "whatsapp://send?text=" + msg + "&phone=65" + mobile
+                )
+              }
+            >
+              WhatsApp: {mobile}
+            </Text>
+
             <Text style={styles.cardTitle2}>
               Click below to check your NTRP rating (National Tennis Rating
               Program)
