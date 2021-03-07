@@ -135,7 +135,13 @@ export default function IndexScreen({ navigation, route }) {
   function renderPost({ item }) {
     return (
       <Card style={styles.card}>
-        <CardItem style={{ backgroundColor: "white" }}>
+        <CardItem
+          // style={{ backgroundColor: "white" }}>
+          style={[
+            commonStyles.container,
+            isDarkModeOn && { backgroundColor: "black" },
+          ]}
+        >
           <Body style={{ flexDirection: "row", alignItems: "center" }}>
             <View
               style={{
@@ -151,8 +157,10 @@ export default function IndexScreen({ navigation, route }) {
             </View>
             <View style={{ width: "80%", flexDirection: "column" }}>
               <TouchableOpacity onPress={() => showPressed(item.id)}>
-                <Text style={styles.renderViewText}>{item.title}</Text>
-                <Text style={{ color: "blue" }} numberOfLines={1}>
+                <Text style={isDarkModeOn && { color: "white" }}>
+                  {item.title}
+                </Text>
+                <Text style={{ color: "green" }} numberOfLines={1}>
                   {item.content}
                 </Text>
               </TouchableOpacity>

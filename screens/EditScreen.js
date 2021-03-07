@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { commonStyles } from "../styles/commonStyles";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { API, API_POST_ID, API_EDIT_POST_ID } from "../hooks/useAPI";
 
 export default function EditScreen({ navigation, route }) {
@@ -29,6 +30,7 @@ export default function EditScreen({ navigation, route }) {
   const [id, setID] = useState(route.params.id);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const isDarkModeOn = useSelector((state) => state.prefs.darkMode);
 
   // Start when loaded
   useEffect(() => {
@@ -134,9 +136,16 @@ export default function EditScreen({ navigation, route }) {
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={commonStyles.container}>
+      <View
+        style={[
+          commonStyles.container,
+          isDarkModeOn && { backgroundColor: "black" },
+        ]}
+      >
         <Text style={styles.textLabel}>Edit Post</Text>
-        <Text style={styles.textLabel2}>Name</Text>
+        <Text style={[styles.textLabel2, isDarkModeOn && { color: "white" }]}>
+          Name
+        </Text>
         <TextInput
           placeholder="Enter  Name..."
           style={styles.textInput}
@@ -145,7 +154,10 @@ export default function EditScreen({ navigation, route }) {
           onTextInput={() => setErrorMessage("")}
           autoCorrect={false}
         ></TextInput>
-        <Text style={styles.textLabel2}>Date and Time</Text>
+
+        <Text style={[styles.textLabel2, isDarkModeOn && { color: "white" }]}>
+          Date and Time
+        </Text>
         <TextInput
           placeholder="Suggest a date and time for a Game......"
           style={styles.textInput}
@@ -155,16 +167,22 @@ export default function EditScreen({ navigation, route }) {
           autoCorrect={false}
         ></TextInput>
 
-        <Text style={styles.textLabel2}>NTRP Rating </Text>
+        <Text style={[styles.textLabel2, isDarkModeOn && { color: "white" }]}>
+          NTRP Rating{" "}
+        </Text>
         <TextInput
           placeholder="Enter your Tennis NTRP rating..."
+          keyboardType="numeric"
           style={styles.textInput}
           value={ntrp}
           onChangeText={(input) => setNtrp(input)}
           onTextInput={() => setErrorMessage("")}
           autoCorrect={false}
         ></TextInput>
-        <Text style={styles.textLabel2}>Location</Text>
+
+        <Text style={[styles.textLabel2, isDarkModeOn && { color: "white" }]}>
+          Location
+        </Text>
         <TextInput
           placeholder="Enter Game venue..."
           style={styles.textInput}
@@ -173,9 +191,13 @@ export default function EditScreen({ navigation, route }) {
           onTextInput={() => setErrorMessage("")}
           autoCorrect={false}
         ></TextInput>
-        <Text style={styles.textLabel2}>Mobile</Text>
+
+        <Text style={[styles.textLabel2, isDarkModeOn && { color: "white" }]}>
+          Mobile
+        </Text>
         <TextInput
           placeholder="Enter contact Mobile number..."
+          keyboardType="numeric"
           style={styles.textInput}
           value={mobile}
           onChangeText={(input) => setMobile(input)}
@@ -219,7 +241,8 @@ export default function EditScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   textLabel: {
-    fontSize: 18,
+    fontSize: 28,
+    color: "orange",
     fontWeight: "bold",
     marginTop: 50,
     marginBottom: 20,

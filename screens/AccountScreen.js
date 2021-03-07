@@ -51,7 +51,7 @@ export default function AccountScreen({ navigation }) {
       ]}
     >
       <Text style={[styles.titleText, isDarkModeOn && { color: "white" }]}>
-        Kakis Account Screen
+        Kakis Account
       </Text>
       <Image
         source={require("../assets/tennis.png")}

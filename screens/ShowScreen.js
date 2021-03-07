@@ -14,6 +14,8 @@ import { Card, CardItem, Body } from "native-base";
 import axios from "axios";
 import { API, API_POST_ID } from "../hooks/useAPI";
 import { DarkTheme } from "@react-navigation/native";
+import { useDispatch, useSelector } from "react-redux";
+import { color } from "react-native-reanimated";
 
 export default function ShowScreen({ navigation, route }) {
   const [title, setTitle] = useState("");
@@ -25,6 +27,7 @@ export default function ShowScreen({ navigation, route }) {
 
   const [id, setID] = useState(route.params.id);
   const [loading, setLoading] = useState(false);
+  const isDarkModeOn = useSelector((state) => state.prefs.darkMode);
 
   // Start when loaded
   useEffect(() => {
@@ -84,18 +87,36 @@ export default function ShowScreen({ navigation, route }) {
   }
 
   return (
-    <View style={commonStyles.container}>
-      {/*      <Text style={styles.titleText}>Show Screen</Text> */}
-      <Card style={styles.card}>
-        <CardItem>
+    <View
+      style={[
+        commonStyles.container,
+        isDarkModeOn && { backgroundColor: "black" },
+      ]}
+    >
+      <Card style={[styles.card, isDarkModeOn && { backgroundColor: "black" }]}>
+        <CardItem
+          style={[styles.card, isDarkModeOn && { backgroundColor: "black" }]}
+        >
           <Body>
-            <Text style={styles.cardTitle}>{title}</Text>
-            <Text style={styles.cardBody}>NTRP Level: {ntrp}</Text>
-            <Text>{location}</Text>
-            <Text>{content}</Text>
+            <Text
+              style={[styles.cardTitle, isDarkModeOn && { color: "white" }]}
+            >
+              {title}
+            </Text>
+            <Text
+              style={styles.cardBody}
+              style={[styles.cardBody, isDarkModeOn && { color: "white" }]}
+            >
+              NTRP Level: {ntrp}
+            </Text>
+            <Text style={[styles.cardBody, isDarkModeOn && { color: "white" }]}>
+              {location}
+            </Text>
+            <Text style={[isDarkModeOn && { color: "white" }]}>{content}</Text>
 
             <Text
-              style={{ color: "blue" }}
+              // style={{ color: "blue" }}
+              style={[{ color: "blue" }, isDarkModeOn && { color: "skyblue" }]}
               onPress={() =>
                 Linking.openURL(
                   "whatsapp://send?text=" + msg + "&phone=65" + mobile
@@ -110,7 +131,7 @@ export default function ShowScreen({ navigation, route }) {
               Program)
             </Text>
             <Text
-              style={{ color: "blue" }}
+              style={[{ color: "blue" }, isDarkModeOn && { color: "skyblue" }]}
               onPress={() =>
                 Linking.openURL(
                   "https://www.usta.com/content/dam/usta/pdfs/NTRP%20General%20Characteristics.pdf"
