@@ -26,30 +26,6 @@ export default function CreateScreen({ navigation }) {
   const [loading, setLoading] = useState(false);
   const isDarkModeOn = useSelector((state) => state.prefs.darkMode);
 
-  // //DateTime picker
-  // const [date, setDate] = useState(new Date(1598051730000));
-  // const [mode, setMode] = useState("date");
-  // const [show, setShow] = useState(false);
-
-  // const onChange = (event, selectedDate) => {
-  //   const currentDate = selectedDate || date;
-  //   setShow(Platform.OS === "ios");
-  //   setDate(currentDate);
-  // };
-
-  // const showMode = (currentMode) => {
-  //   setShow(true);
-  //   setMode(currentMode);
-  // };
-
-  // const showDatepicker = () => {
-  //   showMode("date");
-  // };
-
-  // const showTimepicker = () => {
-  //   showMode("time");
-  // };
-
   // Create posts to DB
   async function createPost(title, content, ntrp, location, mobile) {
     console.log("--- Post creating ---");
@@ -169,11 +145,6 @@ export default function CreateScreen({ navigation }) {
           onChangeText={(input) => setContent(input)}
           onTextInput={() => setErrorMessage("")}
           autoCorrect={false}
-          // style={styles.textInput}
-          // value={content}
-          // editable={false}
-          // pointerEvents="none"
-          // onTouchStart={(input) => showDatePicker(input)}
         ></TextInput>
 
         <Text style={[styles.textLabel2, isDarkModeOn && { color: "white" }]}>

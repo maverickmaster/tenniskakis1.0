@@ -20,7 +20,6 @@ export default function AccountScreen({ navigation }) {
   const [username, loading, error, refresh] = useUsername();
   const isDarkModeOn = useSelector((state) => state.prefs.darkMode);
   const [isEnabled, setIsEnabled] = useState(false);
-  //const [isEnabled, setIsEnabled] = useState(false);
 
   // signs out if the useUsername hook returns error as true
   useEffect(() => {
@@ -68,9 +67,6 @@ export default function AccountScreen({ navigation }) {
         <Switch
           value={isDarkModeOn}
           onValueChange={() => dispatch(toggleDarkMode())}
-
-          // value={isEnabled}
-          // onValueChange={() => setIsEnabled(!isEnabled)}
         />
       </View>
       <Text> {isDarkModeOn ? "DARK MODE ON" : "DARK MODE OFF"}</Text>

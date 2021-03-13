@@ -115,7 +115,6 @@ export default function ShowScreen({ navigation, route }) {
             <Text style={[isDarkModeOn && { color: "white" }]}>{content}</Text>
 
             <Text
-              // style={{ color: "blue" }}
               style={[{ color: "blue" }, isDarkModeOn && { color: "skyblue" }]}
               onPress={() =>
                 Linking.openURL(
@@ -153,14 +152,6 @@ export default function ShowScreen({ navigation, route }) {
           </Body>
         </CardItem>
       </Card>
-      {/* <TouchableOpacity
-        style={[styles.button, styles.buttonBack]}
-        onPress={() => backPressed()}
-      >
-        <Text style={styles.buttonText}>
-          {loading ? <ActivityIndicator size="large" color="red" /> : "Back"}
-        </Text>
-      </TouchableOpacity> */}
     </View>
   );
 }
