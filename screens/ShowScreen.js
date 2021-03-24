@@ -140,7 +140,7 @@ export default function ShowScreen({ navigation, route }) {
               NTRP Rating Guide
             </Text>
             <Image
-              source={require("../assets/player.gif")}
+              source={require("../assets/ball.gif")}
               style={{
                 height: 380,
                 alignItems: "center",
